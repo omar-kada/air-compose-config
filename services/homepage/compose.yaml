@@ -1,5 +1,8 @@
 services:
   homepage:
+    healthcheck:
+      test: ["CMD", "false"]
+      retries: 1
     image: ghcr.io/gethomepage/homepage:${VERSION:-latest}
     container_name: homepage
     restart: unless-stopped
