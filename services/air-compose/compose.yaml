@@ -1,6 +1,6 @@
 services:
   air-compose:
-    image: ghcr.io/omar-kada/air-compose:0.5.1
+    image: air-compose:local
     container_name: air-compose
     ports:
       - 5005:5005
