@@ -1,0 +1,15 @@
+services:
+  air-compose:
+    image: ghcr.io/omar-kada/air-compose:0.5.1
+    container_name: air-compose
+    ports:
+      - 5005:5005
+    env_file:
+      - .env
+    environment:
+      AIR_COMPOSE_SERVICES_DIR: "${AIR_COMPOSE_SERVICES_DIR}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${AIR_COMPOSE_SERVICES_DIR}:${AIR_COMPOSE_SERVICES_DIR} # path where compose stacks will be stored (must be equal & absolute)
+      - ${AIR_COMPOSE_DATA_PATH}:/data # data for AIR_COMPOSE, like repository files and DB
+    restart: "unless-stopped"
