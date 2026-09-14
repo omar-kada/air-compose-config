@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Keep Docker images used in the compose service definitions up to date.
+  # Each service lives in its own subfolder under /services with its own
+  # docker-compose.yml, so we glob across all of them in one entry.
+  - package-ecosystem: "docker-compose"
+    directories:
+      - "/services/*"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "docker"
+    commit-message:
+      prefix: "docker-compose"
+    cooldown:
+      default-days: 7
