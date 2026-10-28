@@ -1,0 +1,12 @@
+services:
+  stirling-pdf:
+    image: ghcr.io/stirling-tools/stirling-pdf:${VERSION:-latest}
+    container_name: stirling-pdf
+    ports:
+      - ${PORT:-8080}:8080
+    volumes:
+      - ${DATA_PATH:-.}/stirling-pdf:/usr/src/app/training_files
+    restart: unless-stopped
+    env_file:
+      - .env
+networks: {}
